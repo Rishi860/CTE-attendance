@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase.js"></script>
+
+</head>
+<body>
+    <p id="demo" onclick="myFunction()">Click me to change my text color.</p>
+    <a href="#" onclick="uploadFunction()">Click here to add data</a>
+<script>
+function uploadFunction() {
+    document.getElementById("demo").innerHTML ='I got changed';
+}
+</script>
+    <script src="index.js"></script>
+</body>
+</html>
