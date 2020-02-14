@@ -1,4 +1,4 @@
-var dates_keys,classes,course_keys,Id_keys,courseName;
+var data=[];
   // Your web app's Firebase configuration
   var firebaseConfig = {
     apiKey: "AIzaSyDeUQZmPYeJQd8RnPx5teL_bEXlJClKmBU",
@@ -19,27 +19,54 @@ var dates_keys,classes,course_keys,Id_keys,courseName;
   
   var leadsRef = database.ref('classes');
   leadsRef.on('value', function(snapshot) {
+    // console.log(snapshot)
+      var dates = Object.keys(snapshot.val());//dates
+      var i=0;var arr=[];
       snapshot.forEach(function(childSnapshot) {
           var childData = childSnapshot.val();
-          console.log(Object.keys(childData));
-          childSnapshot.forEach(function(grandChildSanpshot){
-            var grandChildData = grandChildSanpshot.val();
-            console.log(Object.keys(grandChildData));
-          })
-          // var lastName = childSnapshot.child();
-          // var id = Object.keys(lastName);
-          // console.log(id)
+          var coursesDates = [];
+          var courseName = Object.keys(childData);
+          // console.log(courseName);// number of classes that day
+          var nameit = Object.entries(childData) ;
+          var arr1 = [];
+          for(var x=0;x<nameit.length;x++){
+            var id = Object.keys(nameit[x][1]);
+            arr1.push([nameit[x][0],id]);
+          }
+            arr.push([dates[i],arr1]);
+            i++;
+      });
+          console.log(arr);
+
+          var leadsRef1 = database.ref('studentList');
+          leadsRef1.on('value', function(snapshot) {
+          var course_ = Object.keys(snapshot.val());
+          var y=0;var arr2=[];
+          snapshot.forEach(function(childSnapshot) {
+          var childData = childSnapshot.val();
+          var studentsRegisterd = Object.keys(childData);
+          arr2.push([course_[y],studentsRegisterd])
+          y++;
+          // console.log(studentsRegisterd)
+        });
+          // console.log(arr2); // arr2 conatains registered students.
+            for(var a=0;a<arr.length;a++){
+              for(var b=0;b<arr[a][1].length;b++){
+
+                for(var b1=0;b1<arr2.length;b1++){
+                  if(arr[a][1][b][0] === arr2[b1][0]){
+                    for(var c=0;c<arr[a][1][b][1].length;c++){
+                      for(var c1=0;c1<arr2[b1][1].length;c1++){
+                        if(arr2[b1][1][c1] === arr[a][1][b][1][c]){
+                          console.log("hello");
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
       });
   });
 
-  var leadsRef = database.ref('studentList');
-leadsRef.on('value', function(snapshot) {
-    console.log(Object.keys(snapshot.val()));
-    snapshot.forEach(function(childSnapshot) {
-      var childData = childSnapshot.val();
-      console.log(Object.keys(childData));
-    });
-});
-
-
-
+  
