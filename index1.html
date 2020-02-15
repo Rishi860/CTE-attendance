@@ -15,13 +15,25 @@
 
 </head>
 <body>
-    <p id="demo" onclick="myFunction()">Click me to change my text color.</p>
-    <a href="#" onclick="uploadFunction()">Click here to add data</a>
-<script>
-function uploadFunction() {
-    document.getElementById("demo").innerHTML ='I got changed';
-}
-</script>
+    <div class="container">
+        <h2>Attendance Table</h2>        
+        <table class="table">
+          <thead>
+            <tr>
+              <th><strong>Date</strong></th>
+              <th><strong>CourseName</strong></th>
+              <th><strong>ID</strong></th>
+              <th><strong>Name</strong></th>
+            </tr>
+          </thead>
+          <tbody id="items">
+          </tbody>
+        </table>
+      </div>
+     <script 
+        type="text/javascript"
+        src="https://code.jquery.com/jquery-2.2.4.min.js"
+    ></script>
     <script src="index.js"></script>
 </body>
 </html>
