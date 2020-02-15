@@ -53,9 +53,12 @@ var data=[];
                     for(var c=0;c<arr[a][1][b][1].length;c++){
                       for(var c1=0;c1<arr2[b1][1].length;c1++){
                         if(arr2[b1][1][c1] === arr[a][1][b][1][c]){
-                            console.log(arr[a][1][b][1][c]); // Id of that person
                           if(arr2[b1][1][c1] === arr_name[b1][c1][0]){
-                            console.log(arr_name[b1][c1][1]); // name of that person
+                            console.log(arr[a][0]); // date 
+                            console.log(arr2[b1][0]);// course name
+                            console.log(arr[a][1][b][1][c]); // Id of that person
+                            console.log(arr_name[b1][c1][1]);// name of that person
+                            console.log("") ;
                           }
                         }
                       }
