@@ -14,34 +14,28 @@ var data=[];
 
   var database = firebase.database();
 
-//   console.log(database);
-  // Getting data from classes
   
   var leadsRef = database.ref('classes');
   leadsRef.on('value', function(snapshot) {
-    // console.log(snapshot)
+
       var dates = Object.keys(snapshot.val());//dates
       var i=0;var arr=[];
       snapshot.forEach(function(childSnapshot) {
           var childData = childSnapshot.val();
-          var coursesDates = [];
-          var courseName = Object.keys(childData);
-          // console.log(courseName);// number of classes that day
-          var nameit = Object.entries(childData) ;
+          var course_data = Object.entries(childData) ; 
           var arr1 = [];
-          for(var x=0;x<nameit.length;x++){
-            var id = Object.keys(nameit[x][1]);
-            arr1.push([nameit[x][0],id]);
+          for(var x=0;x<course_data.length;x++){
+            var id = Object.keys(course_data[x][1]);
+            arr1.push([course_data[x][0],id]);
           }
             arr.push([dates[i],arr1]);
             i++;
       });
-          // console.log(arr);
 
           var leadsRef1 = database.ref('studentList');
           leadsRef1.on('value', function(snapshot) {
           var course_ = Object.keys(snapshot.val());
-          var y=0;var arr2=[];var arr_name=[];
+          var y=0;var arr2=[];var arr_name=[];  // arr2 is cte database / arr_name is array of name with their id
           snapshot.forEach(function(childSnapshot) {
           var childData = childSnapshot.val();
           var studentsRegisterd = Object.keys(childData);
@@ -51,8 +45,6 @@ var data=[];
           arr_name.push(sregName);
           
         });
-        // console.log(arr_name)
-          // console.log(arr2); // arr2 conatains registered students.
             for(var a=0;a<arr.length;a++){
               for(var b=0;b<arr[a][1].length;b++){
 
