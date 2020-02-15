@@ -1,4 +1,6 @@
 var data=[];
+const $items = $('#items');
+
   // Your web app's Firebase configuration
   var firebaseConfig = {
     apiKey: "AIzaSyDeUQZmPYeJQd8RnPx5teL_bEXlJClKmBU",
@@ -59,6 +61,8 @@ var data=[];
                             console.log(arr[a][1][b][1][c]); // Id of that person
                             console.log(arr_name[b1][c1][1]);// name of that person
                             console.log("") ;
+                            const $tr = $('<tr><th>' +arr[a][0]  + '</th>'+'<th>' +arr2[b1][0]  + '</th>'+'<th>' +arr[a][1][b][1][c]  + '</th>'+'<th>' +arr_name[b1][c1][1] + '</th></tr>')
+                             $items.append($tr);
                           }
                         }
                       }
@@ -69,3 +73,4 @@ var data=[];
             }
       });
   });
+           
